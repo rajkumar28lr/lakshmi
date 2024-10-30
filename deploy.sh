@@ -1,7 +1,7 @@
 #!/bin/bash
 docker login -u rajkumar2128  -p dckr_pat_Hx7I1qSP_Ol23ZeCgUbtnJ9PMAQ
 
-if [[ $GIT_BRANCH == "origin/dev" ]]; then
+if [[ $GIT_BRANCH == "dev" ]]; then
        sh 'chmod +x build.sh'
        sh './build.sh'
 
