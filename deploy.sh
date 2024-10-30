@@ -8,7 +8,7 @@ if [ $GIT_BRANCH == "dev" ]; then
         docker tag test rajkumar2128/dev
         docker push rajkumar2128/dev
 
-if [ $GIT_BRANCH == "origin/master" ]; then
+elif [ $GIT_BRANCH == "origin/master" ]; then
         sh 'chmod +x build.sh'
         sh './build.sh'
 
