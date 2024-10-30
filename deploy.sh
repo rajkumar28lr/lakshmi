@@ -1,17 +1,19 @@
 #!/bin/bash
-mkdir a
-if [[ $GIT_BRANCH == "dev" ]]; then
-    # Build your project
-    sh 'chmod +x build.sh'
-    sh './build.sh'
-    docker login -u rajkumar2128 -p dckr_pat_Hx7I1qSP_Ol23ZeCgUbtnJ9PMAQ 
-    docker tag test rajkumar2128/dev
-    docker push rajkumar2128/dev
+docker login -u rajkumar2128  -p dckr_pat_Hx7I1qSP_Ol23ZeCgUbtnJ9PMAQ
 
-elif [[ $GIT_BRANCH == "origin/main" ]]; then
-    sh 'chmod +x build.sh'
-    sh './build.sh'
-    docker login -u rajkumar2128 -p dckr_pat_Hx7I1qSP_Ol23ZeCgUbtnJ9PMAQ
-    docker tag test rajkumar2128/prod 
-    docker push rajkumar2128/prod
-fi
+if [[ $GIT_BRANCH == "origin/dev" ]]; then
+       sh 'chmod +x build.sh'
+       sh './build.sh'
+
+        docker tag test rajkumar2128/dev
+        docker push rajkumar2128/dev
+
+if [[ $GIT_BRANCH == "origin/master" ]]; then
+        sh 'chmod +x build.sh'
+        sh './build.sh'
+
+        docker tag test rajkumar2128/prod
+        docker push rajkumar2128/prod
+
+else
+        echo "failed"
